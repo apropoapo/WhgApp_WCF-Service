@@ -15,7 +15,7 @@ Public Class _default
         Dim ipHostInfo As IPHostEntry = Dns.Resolve(Dns.GetHostName())
         Dim ipAddress As IPAddress = ipHostInfo.AddressList(0)
         lstBoxLog.Items.Add(ipAddress.ToString)
-        startAsynServer()
+
     End Sub
 
     Public Sub startAsynServer()
@@ -93,6 +93,9 @@ Public Class _default
         allDone.Set()
     End Sub
 
+    Protected Sub btnStartServer_Click(sender As Object, e As EventArgs) Handles btnStartServer.Click
+        startAsynServer()
+    End Sub
 End Class
 
 

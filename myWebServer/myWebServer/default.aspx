@@ -12,6 +12,8 @@
     
         <asp:Label ID="Label1" runat="server" Text="my Test Text!!"></asp:Label>
     
+        <asp:Button ID="btnStartServer" runat="server" Text="Start Server" />
+    
         <br />
         <asp:ListBox ID="lstBoxLog" runat="server" Height="231px" Width="604px"></asp:ListBox>
     
