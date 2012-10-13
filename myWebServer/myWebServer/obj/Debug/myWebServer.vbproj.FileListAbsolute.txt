@@ -1,0 +1,10 @@
+C:\Users\Hallo\Documents\GitHub\wohnungssuche\myWebServer\myWebServer\bin\myWebServer.dll
+C:\Users\Hallo\Documents\GitHub\wohnungssuche\myWebServer\myWebServer\bin\myWebServer.pdb
+C:\Users\Hallo\Documents\GitHub\wohnungssuche\myWebServer\myWebServer\bin\myWebServer.xml
+C:\Users\Hallo\Documents\GitHub\wohnungssuche\myWebServer\myWebServer\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\Hallo\Documents\GitHub\wohnungssuche\myWebServer\myWebServer\obj\Debug\myWebServer.Resources.resources
+C:\Users\Hallo\Documents\GitHub\wohnungssuche\myWebServer\myWebServer\obj\Debug\GenerateResource.read.1.tlog
+C:\Users\Hallo\Documents\GitHub\wohnungssuche\myWebServer\myWebServer\obj\Debug\GenerateResource.write.1.tlog
+C:\Users\Hallo\Documents\GitHub\wohnungssuche\myWebServer\myWebServer\obj\Debug\myWebServer.dll
+C:\Users\Hallo\Documents\GitHub\wohnungssuche\myWebServer\myWebServer\obj\Debug\myWebServer.xml
+C:\Users\Hallo\Documents\GitHub\wohnungssuche\myWebServer\myWebServer\obj\Debug\myWebServer.pdb
