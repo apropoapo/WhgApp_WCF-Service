@@ -1,0 +1,10 @@
+C:\Users\Hallo\Documents\Visual Studio 2010\Projects\inet_TCP\webServer\bin\webServer.dll
+C:\Users\Hallo\Documents\Visual Studio 2010\Projects\inet_TCP\webServer\bin\webServer.pdb
+C:\Users\Hallo\Documents\Visual Studio 2010\Projects\inet_TCP\webServer\bin\webServer.xml
+C:\Users\Hallo\Documents\Visual Studio 2010\Projects\inet_TCP\webServer\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\Hallo\Documents\Visual Studio 2010\Projects\inet_TCP\webServer\obj\Debug\webServer.Resources.resources
+C:\Users\Hallo\Documents\Visual Studio 2010\Projects\inet_TCP\webServer\obj\Debug\GenerateResource.read.1.tlog
+C:\Users\Hallo\Documents\Visual Studio 2010\Projects\inet_TCP\webServer\obj\Debug\GenerateResource.write.1.tlog
+C:\Users\Hallo\Documents\Visual Studio 2010\Projects\inet_TCP\webServer\obj\Debug\webServer.dll
+C:\Users\Hallo\Documents\Visual Studio 2010\Projects\inet_TCP\webServer\obj\Debug\webServer.xml
+C:\Users\Hallo\Documents\Visual Studio 2010\Projects\inet_TCP\webServer\obj\Debug\webServer.pdb
