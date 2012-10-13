@@ -12,6 +12,9 @@
     
         <asp:Label ID="Label1" runat="server" Text="my Test Text!!"></asp:Label>
     
+        <br />
+        <asp:ListBox ID="lstBoxLog" runat="server" Height="231px" Width="604px"></asp:ListBox>
+    
     </div>
     </form>
 </body>
