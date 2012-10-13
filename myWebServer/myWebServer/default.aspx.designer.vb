@@ -41,6 +41,15 @@ Partial Public Class _default
     Protected WithEvents btnStartServer As Global.System.Web.UI.WebControls.Button
 
     '''<summary>
+    '''btnTest control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents btnTest As Global.System.Web.UI.WebControls.Button
+
+    '''<summary>
     '''lstBoxLog control.
     '''</summary>
     '''<remarks>

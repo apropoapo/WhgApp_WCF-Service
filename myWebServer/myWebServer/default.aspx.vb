@@ -96,6 +96,13 @@ Public Class _default
     Protected Sub btnStartServer_Click(sender As Object, e As EventArgs) Handles btnStartServer.Click
         startAsynServer()
     End Sub
+
+    Protected Sub btnTest_Click(sender As Object, e As EventArgs) Handles btnTest.Click
+        Dim ipHostInfo As IPHostEntry = Dns.Resolve(Dns.GetHostName())
+        Dim ipAddress As IPAddress = ipHostInfo.AddressList(0)
+        Dim localEndPoint As New IPEndPoint(ipAddress, 11000)
+
+    End Sub
 End Class
 
 

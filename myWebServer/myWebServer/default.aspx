@@ -14,6 +14,8 @@
     
         <asp:Button ID="btnStartServer" runat="server" Text="Start Server" />
     
+        <asp:Button ID="btnTest" runat="server" Text="Test" Width="85px" />
+    
         <br />
         <asp:ListBox ID="lstBoxLog" runat="server" Height="231px" Width="604px"></asp:ListBox>
     
