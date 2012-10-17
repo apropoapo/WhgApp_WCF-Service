@@ -55,6 +55,22 @@ Label1 control.
 Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
+</member><member name="F:myWebServer._default.btnStartServer">
+	<summary>
+btnStartServer control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:myWebServer._default.btnTest">
+	<summary>
+btnTest control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
 </member><member name="F:myWebServer._default.lstBoxLog">
 	<summary>
 lstBoxLog control.

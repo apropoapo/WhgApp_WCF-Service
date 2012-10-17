@@ -12,9 +12,10 @@ Public Class _default
 
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
 
-        Dim ipHostInfo As IPHostEntry = Dns.Resolve(Dns.GetHostName())
-        Dim ipAddress As IPAddress = ipHostInfo.AddressList(0)
-        lstBoxLog.Items.Add(ipAddress.ToString)
+        'Dim ipHostInfo As IPHostEntry = Dns.Resolve(Dns.GetHostName())
+        'Dim ipAddress As IPAddress = ipHostInfo.AddressList(0)
+        'lstBoxLog.Items.Add(ipAddress.ToString)
+
 
     End Sub
 
@@ -100,7 +101,11 @@ Public Class _default
     Protected Sub btnTest_Click(sender As Object, e As EventArgs) Handles btnTest.Click
         Dim ipHostInfo As IPHostEntry = Dns.Resolve(Dns.GetHostName())
         Dim ipAddress As IPAddress = ipHostInfo.AddressList(0)
+        lstBoxLog.Items.Add(ipAddress.ToString)
+
         Dim localEndPoint As New IPEndPoint(ipAddress, 11000)
+        Dim listener = New Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp)
+        lstBoxLog.Items.Add(listener.ToString())
 
     End Sub
 End Class
