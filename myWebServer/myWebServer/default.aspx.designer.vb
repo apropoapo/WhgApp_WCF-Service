@@ -50,6 +50,15 @@ Partial Public Class _default
     Protected WithEvents btnTest As Global.System.Web.UI.WebControls.Button
 
     '''<summary>
+    '''btnServerOff control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents btnServerOff As Global.System.Web.UI.WebControls.Button
+
+    '''<summary>
     '''lstBoxLog control.
     '''</summary>
     '''<remarks>
@@ -57,4 +66,13 @@ Partial Public Class _default
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents lstBoxLog As Global.System.Web.UI.WebControls.ListBox
+
+    '''<summary>
+    '''ListBox1 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents lstBoxStatus As Global.System.Web.UI.WebControls.ListBox
 End Class

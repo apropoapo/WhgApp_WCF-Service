@@ -6,35 +6,33 @@ Imports System.Threading
 Public Class _default
     Inherits System.Web.UI.Page
 
-    Const port As Integer = 11000
+    Const port As Integer = 11003
     Public Shared allDone As New ManualResetEvent(False)
-    Public Shared receivedMsg As New ManualResetEvent(True)
+    Public Shared receivedMsg As New ManualResetEvent(False)
+    Public Shared listener As Socket
 
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
 
-        'Dim ipHostInfo As IPHostEntry = Dns.Resolve(Dns.GetHostName())
-        'Dim ipAddress As IPAddress = ipHostInfo.AddressList(0)
-        'lstBoxLog.Items.Add(ipAddress.ToString)
-
+        Dim ipHostInfo As IPHostEntry = Dns.Resolve(Dns.GetHostName())
+        Dim ipAddress As IPAddress = ipHostInfo.AddressList(0)
+        lstBoxLog.Items.Add(ipAddress.ToString)
 
     End Sub
 
     Public Sub startAsynServer()
+
         Dim ipHostInfo As IPHostEntry = Dns.Resolve(Dns.GetHostName())
         Dim ipAddress As IPAddress = ipHostInfo.AddressList(0)
         Dim localEndPoint As New IPEndPoint(ipAddress, port)
 
-        Dim listener = New Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp)
-
+        lstBoxStatus.Items.Add("Initialised: " & Not (ReferenceEquals(listener, Nothing)))
+        listener = New Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp)
         listener.Bind(localEndPoint)
         listener.Listen(100)
-
-        'lstBoxLog.Items.Add("Status: Waiting for Connection...")
+        lstBoxStatus.Items.Add("Initialised: " & Not (ReferenceEquals(listener, Nothing)))
 
         Dim acceptingThread As New Thread(AddressOf acceptingThreadMethod)
         acceptingThread.Start(listener)
-
-
 
     End Sub
 
@@ -50,7 +48,7 @@ Public Class _default
 
 
     Private Sub AcceptCallback(ByVal ar As IAsyncResult)
-        Dim listener As Socket = CType(ar.AsyncState, Socket)
+        ' Dim listener As Socket = CType(ar.AsyncState, Socket)
 
         Dim handler = listener.EndAccept(ar)
 
@@ -78,8 +76,6 @@ Public Class _default
         Dim handler As Socket = state.workSocket
         Dim bytesRead As Integer = handler.EndReceive(ar)
 
-
-
         ' An incoming connection needs to be processed.
         If bytesRead > 0 Then
             data = Encoding.Unicode.GetString(state.buffer, 0, bytesRead)
@@ -90,6 +86,9 @@ Public Class _default
 
             End If
         End If
+        handler.Shutdown(SocketShutdown.Both)
+        handler.Close()
+        lstBoxStatus.Items.Add("Initialised: " & Not (ReferenceEquals(listener, Nothing)))
         receivedMsg.Set()
         allDone.Set()
     End Sub
@@ -99,14 +98,32 @@ Public Class _default
     End Sub
 
     Protected Sub btnTest_Click(sender As Object, e As EventArgs) Handles btnTest.Click
+
         Dim ipHostInfo As IPHostEntry = Dns.Resolve(Dns.GetHostName())
         Dim ipAddress As IPAddress = ipHostInfo.AddressList(0)
         lstBoxLog.Items.Add(ipAddress.ToString)
 
-        Dim localEndPoint As New IPEndPoint(ipAddress, 11000)
-        Dim listener = New Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp)
+        Dim localEndPoint As New IPEndPoint(ipAddress, 11001)
+        listener = New Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp)
         lstBoxLog.Items.Add(listener.ToString())
 
+        listener.Bind(localEndPoint)
+        listener.Listen(100)
+
+        lstBoxLog.Items.Add("localEndPoint gebunden & listening")
+        lstBoxLog.Items.Add("Status: Waiting for Connection...")
+
+        allDone.Reset()
+        listener.BeginAccept(New AsyncCallback(AddressOf AcceptCallback), listener)
+        allDone.WaitOne()
+
+    End Sub
+
+    Protected Sub Button1_Click(sender As Object, e As EventArgs) Handles btnServerOff.Click
+        lstBoxStatus.Items.Add("Initialised: " & Not (ReferenceEquals(listener, Nothing)))
+        listener.Shutdown(SocketShutdown.Both)
+        listener.Close()
+        lstBoxStatus.Items.Add("Initialised: " & Not (ReferenceEquals(listener, Nothing)))
     End Sub
 End Class
 

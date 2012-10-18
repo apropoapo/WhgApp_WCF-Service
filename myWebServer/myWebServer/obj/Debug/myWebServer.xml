@@ -71,9 +71,25 @@ btnTest control.
 Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
+</member><member name="F:myWebServer._default.btnServerOff">
+	<summary>
+btnServerOff control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
 </member><member name="F:myWebServer._default.lstBoxLog">
 	<summary>
 lstBoxLog control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:myWebServer._default.lstBoxStatus">
+	<summary>
+ListBox1 control.
 </summary>
 	<remarks>
 Auto-generated field.
