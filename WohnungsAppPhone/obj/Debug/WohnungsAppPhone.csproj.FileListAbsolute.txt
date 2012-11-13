@@ -1,0 +1,13 @@
+C:\Users\Hallo\Documents\Visual Studio 2010\Projects\myFlatCloudService2\WohnungsAppPhone\Bin\Debug\ApplicationIcon.png
+C:\Users\Hallo\Documents\Visual Studio 2010\Projects\myFlatCloudService2\WohnungsAppPhone\Bin\Debug\Background.png
+C:\Users\Hallo\Documents\Visual Studio 2010\Projects\myFlatCloudService2\WohnungsAppPhone\Bin\Debug\WohnungsAppPhone.dll
+C:\Users\Hallo\Documents\Visual Studio 2010\Projects\myFlatCloudService2\WohnungsAppPhone\Bin\Debug\WohnungsAppPhone.pdb
+C:\Users\Hallo\Documents\Visual Studio 2010\Projects\myFlatCloudService2\WohnungsAppPhone\Bin\Debug\AppManifest.xaml
+C:\Users\Hallo\Documents\Visual Studio 2010\Projects\myFlatCloudService2\WohnungsAppPhone\Bin\Debug\WohnungsAppPhone.xap
+C:\Users\Hallo\Documents\Visual Studio 2010\Projects\myFlatCloudService2\WohnungsAppPhone\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\Hallo\Documents\Visual Studio 2010\Projects\myFlatCloudService2\WohnungsAppPhone\obj\Debug\App.g.i.cs
+C:\Users\Hallo\Documents\Visual Studio 2010\Projects\myFlatCloudService2\WohnungsAppPhone\obj\Debug\MainPage.g.i.cs
+C:\Users\Hallo\Documents\Visual Studio 2010\Projects\myFlatCloudService2\WohnungsAppPhone\obj\Debug\WohnungsAppPhone.g.resources
+C:\Users\Hallo\Documents\Visual Studio 2010\Projects\myFlatCloudService2\WohnungsAppPhone\obj\Debug\WohnungsAppPhone.dll
+C:\Users\Hallo\Documents\Visual Studio 2010\Projects\myFlatCloudService2\WohnungsAppPhone\obj\Debug\WohnungsAppPhone.pdb
+C:\Users\Hallo\Documents\Visual Studio 2010\Projects\myFlatCloudService2\WohnungsAppPhone\obj\Debug\XapCacheFile.xml
