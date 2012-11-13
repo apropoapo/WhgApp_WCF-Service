@@ -13,11 +13,12 @@
         <asp:ListBox ID="lstBox1" runat="server" Height="306px" Width="738px">
         </asp:ListBox>
     
-    <asp:ScriptManager ID="ScriptManager2" runat="server">
+  <!--  <asp:ScriptManager ID="ScriptManager2" runat="server">
     </asp:ScriptManager>
 
     <asp:Timer ID="Timer1" runat="server" interval= "180000" ontick="Timer1_Tick">
     </asp:Timer>
+    -->
 
     </form>
 </body>
