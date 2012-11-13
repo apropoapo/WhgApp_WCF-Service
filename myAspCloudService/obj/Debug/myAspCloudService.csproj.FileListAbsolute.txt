@@ -1,5 +1,0 @@
-C:\Users\Hallo\Documents\Visual Studio 2010\Projects\myFlatCloudService2\myAspCloudService\bin\myAspCloudService.dll
-C:\Users\Hallo\Documents\Visual Studio 2010\Projects\myFlatCloudService2\myAspCloudService\bin\myAspCloudService.pdb
-C:\Users\Hallo\Documents\Visual Studio 2010\Projects\myFlatCloudService2\myAspCloudService\obj\Debug\ResolveAssemblyReference.cache
-C:\Users\Hallo\Documents\Visual Studio 2010\Projects\myFlatCloudService2\myAspCloudService\obj\Debug\myAspCloudService.dll
-C:\Users\Hallo\Documents\Visual Studio 2010\Projects\myFlatCloudService2\myAspCloudService\obj\Debug\myAspCloudService.pdb

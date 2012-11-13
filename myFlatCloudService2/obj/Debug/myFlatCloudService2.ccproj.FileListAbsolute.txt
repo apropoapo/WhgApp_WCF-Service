@@ -1,1 +1,0 @@
-C:\Users\Hallo\Documents\Visual Studio 2010\Projects\myFlatCloudService2\myFlatCloudService2\bin\Debug\ServiceConfiguration.cscfg
