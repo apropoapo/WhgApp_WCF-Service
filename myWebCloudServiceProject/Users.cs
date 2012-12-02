@@ -164,11 +164,13 @@ namespace myWebCloudServiceProject
                             if (u.check() && u.UsePushNotifications == 1)
                             {
                                 //  u.sendPush(); TESTZWECK:
-                                s[i] = "sende push an den " + i + ". User. newCount= " + u.newCount + " newId: " + u.newScoutId + " oldCount= " + u.newCount + " oldId: " + u.newScoutId;
+                                s[i] = "sende push an den " + i + ". User. newCount= " + u.newCount + " newId: " + u.newScoutId + " oldCount= " + u.oldCount + " oldId: " + u.oldScoutId;
                             }
-                            //testzweck:
-                            s[i] = "sende KEIN push an den " + i + ". User. newCount= " + u.newCount + " newId: " + u.newScoutId + " oldCount= " + u.newCount + " oldId: " + u.newScoutId;
-
+                            else
+                            {
+                                //testzweck:
+                                s[i] = "sende KEIN push an den " + i + ". User. newCount= " + u.newCount + " newId: " + u.newScoutId + " oldCount= " + u.oldCount + " oldId: " + u.oldScoutId;
+                            }
 
                         }
                         else if (u.UsePushNotifications != 1)
