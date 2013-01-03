@@ -1,6 +1,0 @@
-C:\Users\Hallo\Documents\GitHub\WCF_Test2\WCF_Test2\bin\Debug\WCF_Test2.dll.config
-C:\Users\Hallo\Documents\GitHub\WCF_Test2\WCF_Test2\bin\Debug\WCF_Test2.dll
-C:\Users\Hallo\Documents\GitHub\WCF_Test2\WCF_Test2\bin\Debug\WCF_Test2.pdb
-C:\Users\Hallo\Documents\GitHub\WCF_Test2\WCF_Test2\obj\Debug\ResolveAssemblyReference.cache
-C:\Users\Hallo\Documents\GitHub\WCF_Test2\WCF_Test2\obj\Debug\WCF_Test2.dll
-C:\Users\Hallo\Documents\GitHub\WCF_Test2\WCF_Test2\obj\Debug\WCF_Test2.pdb
