@@ -16,7 +16,10 @@ public interface IService
 	int plusplus(int v1, int v2);
 
     [OperationContract]
-    bool addUser(int changed, string PushNotificationUri, int delete, int UsePushNotifications, string UniqueID, string ImmoscoudID);
+    bool addUser(int changed, string PushNotificationUri, int delete, int UsePushNotifications, string UniqueID, string ImmoscoutURL);
+
+    [OperationContract]
+    int updateUri(int changed, string UniqueID, string PushNotificationUri);
 }
 
 

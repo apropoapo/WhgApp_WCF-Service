@@ -18,18 +18,14 @@ public class Service : IService
 
     const string CONSTRING = "Server=instance29437.db.xeround.com;Port=19153;Database=users;Uid=appharbor;Pwd=NNDKjRzh";
 
-    public bool addUser(int changed, string PushNotificationUri, int delete, int UsePushNotifications, string UniqueID, string ImmoscoudID)
+    public bool addUser(int changed, string PushNotificationUri, int delete, int UsePushNotifications, string UniqueID, string ImmoscoutURL)
     {
         //connect
         MySqlConnection con = new MySqlConnection(CONSTRING);
         con.Open();
 
-        //adapter
-        MySqlDataAdapter adapter = new MySqlDataAdapter();
-
-
         //SQL Insert erstellen
-        string cmdText = "INSERT INTO myapptable (ID, changed, PushNotificationUri, `delete`, UsePushNotifications, UniqueID, ImmoscoutURL) values ( 0, " + changed + ", '" + PushNotificationUri + "', " + delete + ", " + UsePushNotifications +", '"+UniqueID +"', '"+ ImmoscoudID+"');";
+        string cmdText = "INSERT INTO myapptable (ID, changed, PushNotificationUri, `delete`, UsePushNotifications, UniqueID, ImmoscoutURL) values ( 0, " + changed + ", '" + PushNotificationUri + "', " + delete + ", " + UsePushNotifications +", '"+UniqueID +"', '"+ ImmoscoutURL+"');";
         MySqlCommand cmd = new MySqlCommand(cmdText, con);
 
         // SQL Insert durchführen
@@ -37,4 +33,33 @@ public class Service : IService
         con.Close();
         return true;
     }
+
+    public int updateUri(int changed, string UniqueID, string PushNotificationUri)
+    {
+        //connect
+        MySqlConnection con = new MySqlConnection(CONSTRING);
+        con.Open();
+
+        //SQL COUNT-ABFRAGE erstellen (wird gebraucht für: prüfung ob UniqueID vorhanden ist)
+        string cmdText = "SELECT count(*) FROM myapptable WHERE UniqueID='"+ UniqueID+"';";
+        MySqlCommand cmd = new MySqlCommand(cmdText, con);
+        int count_result = int.Parse(cmd.ExecuteScalar().ToString());
+
+        // prüfen ob uniqueID vorhanden ist
+        if (count_result == 1)
+        {
+            string cmdText2 = "UPDATE myapptable SET PushNotificationUri='" + PushNotificationUri + "', changed=" + changed + " WHERE UniqueID='" + UniqueID+"';";
+            MySqlCommand cmd2 = new MySqlCommand(cmdText2, con);
+            // SQL Insert durchführen
+            cmd2.ExecuteNonQuery();
+        }// falls nicht, wird nichts geändert
+
+
+
+        con.Close();
+
+        return count_result;
+    }
+
+
 }
