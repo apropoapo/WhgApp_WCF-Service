@@ -6,6 +6,7 @@ using System.ServiceModel;
 using System.ServiceModel.Web;
 using System.Text;
 using MySql.Data.MySqlClient;
+using System.Net;
 
 
 // NOTE: You can use the "Rename" command on the "Refactor" menu to change the class name "Service" in code, svc and config file together.
@@ -61,5 +62,34 @@ public class Service : IService
         return count_result;
     }
 
+    public void SendToast(string title, string message, string PushNotificationUri)
+    {
+        string toastMsg = "<?xml version=\"1.0\" encoding=\"utf-8\"?>" +
+            "<wp:Notification xmlns:wp=\"WPNotification\">" +
+                "<wp:Toast>" +
+                    "<wp:Text1>" + title + "</wp:Text1>" +
+                    "<wp:Text2>" + message + "</wp:Text2>" +
+                "</wp:Toast> " +
+            "</wp:Notification>";
+
+        byte[] messageBytes = System.Text.Encoding.UTF8.GetBytes(toastMsg);
+        Uri uri = new Uri(PushNotificationUri);
+        SendMessage(uri, messageBytes);
+    }
+
+    private static void SendMessage(Uri uri, byte[] message)
+    {
+        HttpWebRequest request = (HttpWebRequest)WebRequest.Create(uri);
+        request.Method = WebRequestMethods.Http.Post;
+        request.ContentType = "text/xml";
+        request.ContentLength = message.Length;
+        request.Headers.Add("X-MessageID", Guid.NewGuid().ToString());
+        request.Headers["X-WindowsPhone-Target"] = "toast";
+        request.Headers.Add("X-NotificationClass", "2");
+
+        var requestStream = request.GetRequestStream();
+        requestStream.Write(message, 0, message.Length);
+    }
+ 
 
 }
