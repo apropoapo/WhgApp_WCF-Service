@@ -25,12 +25,22 @@ public class Service : IService
         MySqlConnection con = new MySqlConnection(CONSTRING);
         con.Open();
 
-        //SQL Insert erstellen
-        string cmdText = "INSERT INTO myapptable (ID, changed, PushNotificationUri, `delete`, UsePushNotifications, UniqueID, ImmoscoutURL) values ( 0, " + changed + ", '" + PushNotificationUri + "', " + delete + ", " + UsePushNotifications +", '"+UniqueID +"', '"+ ImmoscoutURL+"');";
-        MySqlCommand cmd = new MySqlCommand(cmdText, con);
 
-        // SQL Insert durchführen
-        cmd.ExecuteNonQuery();
+        //SQL COUNT-ABFRAGE erstellen (wird gebraucht für: prüfung ob UniqueID vorhanden ist)
+        string cmdText2 = "SELECT count(*) FROM myapptable WHERE UniqueID='" + UniqueID + "';";
+        MySqlCommand cmd2 = new MySqlCommand(cmdText2, con);
+        int count_result = int.Parse(cmd2.ExecuteScalar().ToString());
+
+        if (count_result == 0)
+        {
+            //SQL Insert erstellen
+            string cmdText = "INSERT INTO myapptable (ID, changed, PushNotificationUri, `delete`, UsePushNotifications, UniqueID, ImmoscoutURL) values ( 0, " + changed + ", '" + PushNotificationUri + "', " + delete + ", " + UsePushNotifications + ", '" + UniqueID + "', '" + ImmoscoutURL + "');";
+            MySqlCommand cmd = new MySqlCommand(cmdText, con);
+
+            // SQL Insert durchführen
+            cmd.ExecuteNonQuery();
+
+        }
         con.Close();
         return true;
     }
