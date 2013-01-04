@@ -10,7 +10,13 @@
     <form id="form1" runat="server">
     <div>
     
-        blubba</div>
+        blubba<br />
+        <asp:Label ID="lblTest" runat="server" Text="Label"></asp:Label>
+        <br />
+        <asp:Button ID="Namen_anzeigen" runat="server" onclick="Namen_anzeigen_Click" 
+            Text="Name Anzeigen" />
+    
+    </div>
     </form>
 </body>
 </html>
