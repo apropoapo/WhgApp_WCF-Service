@@ -5,6 +5,8 @@ using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.ServiceModel.Web;
 using System.Text;
+using MySql.Data.MySqlClient;
+
 
 // NOTE: You can use the "Rename" command on the "Refactor" menu to change the class name "Service" in code, svc and config file together.
 public class Service : IService
@@ -14,4 +16,25 @@ public class Service : IService
         return v1 + v2;
 	}
 
+    const string CONSTRING = "Server=instance29437.db.xeround.com;Port=19153;Database=users;Uid=appharbor;Pwd=NNDKjRzh";
+
+    public bool addUser(int changed, string PushNotificationUri, int delete, int UsePushNotifications)
+    {
+        //connect
+        MySqlConnection con = new MySqlConnection(CONSTRING);
+        con.Open();
+
+        //adapter
+        MySqlDataAdapter adapter = new MySqlDataAdapter();
+
+
+        //SQL Insert erstellen
+        string cmdText = "INSERT INTO myapptable (ID, changed, PushNotificationUri, delete, UsePushNotifications) values ( NULL, " + changed + ", " + PushNotificationUri + ", " + delete + ", " + UsePushNotifications + ");";
+        MySqlCommand cmd = new MySqlCommand(cmdText, con);
+
+        // SQL Insert durchführen
+        cmd.ExecuteNonQuery();
+        con.Close();
+        return true;
+    }
 }
