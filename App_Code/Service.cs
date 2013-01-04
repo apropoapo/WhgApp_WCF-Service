@@ -18,7 +18,7 @@ public class Service : IService
 
     const string CONSTRING = "Server=instance29437.db.xeround.com;Port=19153;Database=users;Uid=appharbor;Pwd=NNDKjRzh";
 
-    public bool addUser(int changed, string PushNotificationUri, int delete, int UsePushNotifications)
+    public bool addUser(int changed, string PushNotificationUri, int delete, int UsePushNotifications, string UniqueID, string ImmoscoudID)
     {
         //connect
         MySqlConnection con = new MySqlConnection(CONSTRING);
@@ -29,7 +29,7 @@ public class Service : IService
 
 
         //SQL Insert erstellen
-        string cmdText = "INSERT INTO myapptable (ID, changed, PushNotificationUri, `delete`, UsePushNotifications) values ( 0, " + changed + ", '" + PushNotificationUri + "', " + delete + ", " + UsePushNotifications + ");";
+        string cmdText = "INSERT INTO myapptable (ID, changed, PushNotificationUri, `delete`, UsePushNotifications, UniqueID, ImmoscoutURL) values ( 0, " + changed + ", '" + PushNotificationUri + "', " + delete + ", " + UsePushNotifications +", '"+UniqueID +"', '"+ ImmoscoudID+"');";
         MySqlCommand cmd = new MySqlCommand(cmdText, con);
 
         // SQL Insert durchführen
