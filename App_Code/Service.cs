@@ -29,7 +29,7 @@ public class Service : IService
 
 
         //SQL Insert erstellen
-        string cmdText = "INSERT INTO myapptable (ID, changed, PushNotificationUri, delete, UsePushNotifications) values ( NULL, " + changed + ", " + PushNotificationUri + ", " + delete + ", " + UsePushNotifications + ");";
+        string cmdText = "INSERT INTO myapptable (ID, changed, PushNotificationUri, `delete`, UsePushNotifications) values ( 0, " + changed + ", '" + PushNotificationUri + "', " + delete + ", " + UsePushNotifications + ");";
         MySqlCommand cmd = new MySqlCommand(cmdText, con);
 
         // SQL Insert durchführen
