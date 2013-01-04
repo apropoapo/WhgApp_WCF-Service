@@ -1,6 +1,0 @@
-C:\Users\Hallo\Documents\GitHub\wohnungssuche\WcfServiceLibrary1\bin\Release\WcfServiceLibrary1.dll.config
-C:\Users\Hallo\Documents\GitHub\wohnungssuche\WcfServiceLibrary1\bin\Release\WcfServiceLibrary1.dll
-C:\Users\Hallo\Documents\GitHub\wohnungssuche\WcfServiceLibrary1\bin\Release\WcfServiceLibrary1.pdb
-C:\Users\Hallo\Documents\GitHub\wohnungssuche\WcfServiceLibrary1\obj\Release\ResolveAssemblyReference.cache
-C:\Users\Hallo\Documents\GitHub\wohnungssuche\WcfServiceLibrary1\obj\Release\WcfServiceLibrary1.dll
-C:\Users\Hallo\Documents\GitHub\wohnungssuche\WcfServiceLibrary1\obj\Release\WcfServiceLibrary1.pdb
