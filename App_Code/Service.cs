@@ -26,20 +26,26 @@ public class Service : IService
         con.Open();
 
 
-        //SQL COUNT-ABFRAGE erstellen (wird gebraucht für: prüfung ob UniqueID vorhanden ist)
-        string cmdText2 = "SELECT count(*) FROM myapptable WHERE UniqueID='" + UniqueID + "';";
-        MySqlCommand cmd2 = new MySqlCommand(cmdText2, con);
-        int count_result = int.Parse(cmd2.ExecuteScalar().ToString());
+        //SQL COUNT-ABFRAGE durchführen (wird gebraucht für: prüfung ob UniqueID vorhanden ist)
+        string cmdCountText = "SELECT count(*) FROM myapptable WHERE UniqueID='" + UniqueID + "';";
+        MySqlCommand cmdCount = new MySqlCommand(cmdCountText, con);
+        int count_result = int.Parse(cmdCount.ExecuteScalar().ToString());
 
+        // prüfen ob uniqueID vorhanden ist
         if (count_result == 0)
         {
-            //SQL Insert erstellen
-            string cmdText = "INSERT INTO myapptable (ID, changed, PushNotificationUri, `delete`, UsePushNotifications, UniqueID, ImmoscoutURL) values ( 0, " + changed + ", '" + PushNotificationUri + "', " + delete + ", " + UsePushNotifications + ", '" + UniqueID + "', '" + ImmoscoutURL + "');";
-            MySqlCommand cmd = new MySqlCommand(cmdText, con);
+            //SQL Insert durchführen
+            string cmdInsertText = "INSERT INTO myapptable (ID, changed, PushNotificationUri, `delete`, UsePushNotifications, UniqueID, ImmoscoutURL) values ( 0, " + changed + ", '" + PushNotificationUri + "', " + delete + ", " + UsePushNotifications + ", '" + UniqueID + "', '" + ImmoscoutURL + "');";
+            MySqlCommand cmdInsert = new MySqlCommand(cmdInsertText, con);
+            cmdInsert.ExecuteNonQuery();
 
-            // SQL Insert durchführen
-            cmd.ExecuteNonQuery();
-
+        }
+        else
+        {
+            // SQL Update durchführen
+            string cmdUpdateText = "UPDATE myapptable SET changed=" + changed + ", PushNotificationUri='" + PushNotificationUri + "', delete=" + delete + ", UsePushNotifications=" + UsePushNotifications + ", ImmoscoutURL='" + ImmoscoutURL +"' WHERE UniqueID='" + UniqueID + "';";
+            MySqlCommand cmdUpdate = new MySqlCommand(cmdUpdateText, con);
+            cmdUpdate.ExecuteNonQuery();
         }
         con.Close();
         return true;
