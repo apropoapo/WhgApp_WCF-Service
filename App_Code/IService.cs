@@ -20,6 +20,10 @@ public interface IService
 
     [OperationContract]
     int updateUri(int changed, string UniqueID, string PushNotificationUri);
+
+    [OperationContract]
+    void SendToast(string title, string message, string PushNotificationUri);
+
 }
 
 
