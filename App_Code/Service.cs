@@ -109,7 +109,7 @@ public class Service : IService
 
 
 
-    public string[,] getWhgs(string uri)
+    public string[] getWhgs(string uri)
     {
 
         string testuri = "http://www.immobilienscout24.de/Suche/S-82/Wohnung-Miete/Bayern/Muenchen/Altstadt_Am-Hart_Freimann_Haidhausen_Laim_Lehel_Ludwigsvorstadt-Isarvorstadt_Maxvorstadt_Neuhausen_Nymphenburg_Schwabing_Schwabing-West_Schwanthalerhoehe_Sendling_Thalkirchen/2,00-3,00/-/EURO-450,00-800,00";
@@ -119,15 +119,15 @@ public class Service : IService
         var atags = document.DocumentNode.SelectNodes("/descendant::ol/descendant::li[attribute::class=\"is24-res-entry\"]/count(descendant::a[position()=1])");
 
 
-        string[,] res;
+        string[] res;
         int count = atags.Count;
         if (count == 20)
         {
-            res = new String[20, 6];
+            res = new String[20];
         }
         else if (count > 0)
         {
-            res = new String[count, 6];
+            res = new String[count];
         }
         else
         {
@@ -142,7 +142,7 @@ public class Service : IService
             // Beschreibung
             string s = tag.InnerText;
             s = s.Trim();
-            res[i, 0] = s;
+            res[i] = s;
             i++;
         }
 

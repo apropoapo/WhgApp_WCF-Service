@@ -25,7 +25,7 @@ public interface IService
     void SendToast(string title, string message, string PushNotificationUri);
 
     [OperationContract]
-    string[,] getWhgs(string uri);
+    string[] getWhgs(string uri);
 
 }
 
