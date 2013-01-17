@@ -7,7 +7,7 @@ using System.ServiceModel.Web;
 using System.Text;
 using MySql.Data.MySqlClient;
 using System.Net;
-
+using HtmlAgilityPack;
 
 // NOTE: You can use the "Rename" command on the "Refactor" menu to change the class name "Service" in code, svc and config file together.
 public class Service : IService
@@ -105,6 +105,51 @@ public class Service : IService
 
         var requestStream = request.GetRequestStream();
         requestStream.Write(message, 0, message.Length);
+    }
+
+
+
+    public string[,] getWhgs(string uri)
+    {
+
+        string testuri = "http://www.immobilienscout24.de/Suche/S-82/Wohnung-Miete/Bayern/Muenchen/Altstadt_Am-Hart_Freimann_Haidhausen_Laim_Lehel_Ludwigsvorstadt-Isarvorstadt_Maxvorstadt_Neuhausen_Nymphenburg_Schwabing_Schwabing-West_Schwanthalerhoehe_Sendling_Thalkirchen/2,00-3,00/-/EURO-450,00-800,00";
+        var webGet = new HtmlWeb();
+        var document = webGet.Load(testuri);
+
+        var atags = document.DocumentNode.SelectNodes("/descendant::ol/descendant::li[attribute::class=\"is24-res-entry\"]/count(descendant::a[position()=1])");
+
+
+        string[,] res;
+        int count = atags.Count;
+        if (count == 20)
+        {
+            res = new String[20, 6];
+        }
+        else if (count > 0)
+        {
+            res = new String[count, 6];
+        }
+        else
+        {
+            return null;
+        }
+
+
+        //Console.WriteLine("List scout.");
+        int i = 0;
+        foreach (var tag in atags)
+        {
+            // Beschreibung
+            string s = tag.InnerText;
+            s = s.Trim();
+            res[i, 0] = s;
+            i++;
+        }
+
+
+        return res;
+
+      //  Console.ReadLine();
     }
  
 
