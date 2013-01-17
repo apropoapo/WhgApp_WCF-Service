@@ -116,7 +116,7 @@ public class Service : IService
         var webGet = new HtmlWeb();
         var document = webGet.Load(testuri);
 
-        var atags = document.DocumentNode.SelectNodes("/descendant::ol/descendant::li[attribute::class=\"is24-res-entry\"]/count(descendant::a[position()=1])");
+        var atags = document.DocumentNode.SelectNodes("/descendant::ol/descendant::li[attribute::class=\"is24-res-entry\"]/descendant::a[position()=1]");
 
 
         string[] res;
