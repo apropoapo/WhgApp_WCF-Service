@@ -144,7 +144,7 @@ public class Service : IService
         for (int i = 0; i < count; i++)
         {
             string Header = atags[i].InnerText.Trim();
-            string Picture = picture_tag[i].Attributes[1].Value.Trim();
+            string Picture = picture_tag[i].Attributes["src"].Value.Trim();
             string Miete = Miete_tag[i].InnerText.Trim();
             string Flaeche = Flaeche_tag[i].InnerText.Trim();
             string Zimmer = Zimmer_tag[i].InnerText.Trim();
