@@ -117,7 +117,9 @@ public class Service : IService
         var document = webGet.Load(testuri);
 
         var atags = document.DocumentNode.SelectNodes("/descendant::ol/descendant::li[attribute::class=\"is24-res-entry\"]/descendant::a[position()=1]");
-
+        var Miete_tag = document.DocumentNode.SelectNodes("/descendant::ol/descendant::li[attribute::class=\"is24-res-entry\"]/descendant::dl[attribute::class=\"is24-res-details\"]/descendant::dd[position()=1]");
+        var Flaeche_tag = document.DocumentNode.SelectNodes("/descendant::ol/descendant::li[attribute::class=\"is24-res-entry\"]/descendant::dl[attribute::class=\"is24-res-details\"]/descendant::dd[position()=2]");
+        var Zimmer_tag = document.DocumentNode.SelectNodes("/descendant::ol/descendant::li[attribute::class=\"is24-res-entry\"]/descendant::dl[attribute::class=\"is24-res-details\"]/descendant::dd[position()=3]");
 
         string[] res;
         int count = atags.Count;
@@ -136,7 +138,20 @@ public class Service : IService
 
 
         //Console.WriteLine("List scout.");
-        int i = 0;
+        //int i = 0;
+
+        for (int i = 0; i < count; i++)
+        {
+            string Header = atags[i].InnerText.Trim();
+            string Miete = Miete_tag[i].InnerText.Trim();
+            string Flaeche = Flaeche_tag[i].InnerText.Trim();
+            string Zimmer = Zimmer_tag[i].InnerText.Trim();
+            res[i] = Header + ";" + Miete + ";" + Flaeche + ";" + Zimmer;
+
+        }
+        
+        /*
+         *
         foreach (var tag in atags)
         {
             // Beschreibung
@@ -145,7 +160,7 @@ public class Service : IService
             res[i] = s;
             i++;
         }
-
+        */
 
         return res;
 
