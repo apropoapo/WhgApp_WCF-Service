@@ -151,7 +151,7 @@ public class Service : IService
             string Miete = Miete_tag[i].InnerText.Trim();
             string Flaeche = Flaeche_tag[i].InnerText.Trim();
             string Zimmer = Zimmer_tag[i].InnerText.Trim();
-
+            //if (Header == n
             // Convertierungen
             Flaeche = Flaeche.Replace("m&sup2", "m²");
             Header = Header.Replace("m&sup2", "m²");
@@ -159,7 +159,7 @@ public class Service : IService
 
             //Im gesplitteten Array 
             //         0               1              2              3               4 
-            res[i] = Header + ";" + Picture + ";" + Miete + ";" + Zimmer + ";" + Flaeche;
+            res[i] = Header + ";:;" + Picture + ";:;" + Miete + ";:;" + Zimmer + ";:;" + Flaeche;
 
         }
         
