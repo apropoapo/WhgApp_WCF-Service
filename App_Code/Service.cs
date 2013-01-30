@@ -153,13 +153,18 @@ public class Service : IService
             string Miete = Miete_tag[i].InnerText.Trim();
             string Flaeche = Flaeche_tag[i].InnerText.Trim();
             string Zimmer = Zimmer_tag[i].InnerText.Trim();
+            string detail1 = detail1_tag[i].InnerText.Trim();
+            string detail2 = detail2_tag[i].InnerText.Trim();
+            string detail3 = detail3_tag[i].InnerText.Trim();
+            string detail4 = detail4_tag[i].InnerText.Trim();
+
 
             // Convertierungen
             Flaeche = Flaeche.Replace("m&sup2;", "m²");
 
-            //Im gesplitteten Array 
-            //         0               1                 2               3                  4                        5                                        6                          7                             8
-            res[i] = Header + ";:;" + Picture + ";:;" + Miete + ";:;" + Zimmer + ";:;" + Flaeche + ";:;" + detail1_tag[i].InnerText + ";:;" + detail2_tag[i].InnerText + ";:;" + detail3_tag[i].InnerText + ";:;" + detail4_tag[i].InnerText;
+            //Im gesplitteten Array
+            //         0               1                 2               3                  4                5                  6                  7                8
+            res[i] = Header + ";:;" + Picture + ";:;" + Miete + ";:;" + Zimmer + ";:;" + Flaeche + ";:;" + detail1 + ";:;" + detail2 + ";:;" + detail3 + ";:;" + detail4;
 
         }
         
