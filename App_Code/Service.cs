@@ -109,12 +109,12 @@ public class Service : IService
 
 
 
-    public string[] getWhgs(string uri)
+    public string[] getWhgs(string url)
     {
 
-        string testuri = "http://www.immobilienscout24.de/Suche/S-82/Wohnung-Miete/Bayern/Muenchen/Altstadt_Am-Hart_Freimann_Haidhausen_Laim_Lehel_Ludwigsvorstadt-Isarvorstadt_Maxvorstadt_Neuhausen_Nymphenburg_Schwabing_Schwabing-West_Schwanthalerhoehe_Sendling_Thalkirchen/2,00-3,00/-/EURO-450,00-800,00";
+        //string testuri = "http://www.immobilienscout24.de/Suche/S-82/Wohnung-Miete/Bayern/Muenchen/Altstadt_Am-Hart_Freimann_Haidhausen_Laim_Lehel_Ludwigsvorstadt-Isarvorstadt_Maxvorstadt_Neuhausen_Nymphenburg_Schwabing_Schwabing-West_Schwanthalerhoehe_Sendling_Thalkirchen/2,00-3,00/-/EURO-450,00-800,00";
         var webGet = new HtmlWeb();
-        var document = webGet.Load(testuri);
+        var document = webGet.Load(url);
 
         var atags = document.DocumentNode.SelectNodes("/descendant::ol/descendant::li[attribute::class=\"is24-res-entry\"]/descendant::a[position()=1]");
         var picture_tag = document.DocumentNode.SelectNodes("/descendant::ol/descendant::li[attribute::class=\"is24-res-entry\"]/descendant::a[position()=2]/descendant::img");
@@ -151,6 +151,7 @@ public class Service : IService
 
             // Convertierungen
             Flaeche = Flaeche.Replace("m&sup2", "m²");
+            Header = Header.Replace("m&sup2", "m²");
 
 
             //Im gesplitteten Array 
