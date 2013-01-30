@@ -118,9 +118,12 @@ public class Service : IService
 
         var atags = document.DocumentNode.SelectNodes("/descendant::ol/descendant::li[attribute::class=\"is24-res-entry\"]/descendant::a[position()=1]");
         var picture_tag = document.DocumentNode.SelectNodes("/descendant::ol/descendant::li[attribute::class=\"is24-res-entry\"]/descendant::a[position()=2]/descendant::img");
-        var Miete_tag = document.DocumentNode.SelectNodes("/descendant::ol/descendant::li[attribute::class=\"is24-res-entry\"]/descendant::dl[attribute::class=\"is24-res-details\"]/descendant::dd[position()=1]");
-        var Flaeche_tag = document.DocumentNode.SelectNodes("/descendant::ol/descendant::li[attribute::class=\"is24-res-entry\"]/descendant::dl[attribute::class=\"is24-res-details\"]/descendant::dd[position()=2]");
-        var Zimmer_tag = document.DocumentNode.SelectNodes("/descendant::ol/descendant::li[attribute::class=\"is24-res-entry\"]/descendant::dl[attribute::class=\"is24-res-details\"]/descendant::dd[position()=3]");
+        //var Miete_tag = document.DocumentNode.SelectNodes("/descendant::ol/descendant::li[attribute::class=\"is24-res-entry\"]/descendant::dl[attribute::class=\"is24-res-details\"]/descendant::dd[position()=1]");
+        var Miete_tag = document.DocumentNode.SelectNodes("/descendant::ol/descendant::li[attribute::class=\"is24-res-entry\"]/descendant::dl[attribute::class=\"is24-res-details\"]/descendant::dt[text()=\"Kaltmiete: \"]/following::dd[position()=1]");
+       // var Flaeche_tag = document.DocumentNode.SelectNodes("/descendant::ol/descendant::li[attribute::class=\"is24-res-entry\"]/descendant::dl[attribute::class=\"is24-res-details\"]/descendant::dd[position()=2]");
+        var Flaeche_tag = document.DocumentNode.SelectNodes("/descendant::ol/descendant::li[attribute::class=\"is24-res-entry\"]/descendant::dl[attribute::class=\"is24-res-details\"]/descendant::dt[text()=\" Wohnfl&auml;che: \"]/following::dd[position()=1]");
+        //var Zimmer_tag = document.DocumentNode.SelectNodes("/descendant::ol/descendant::li[attribute::class=\"is24-res-entry\"]/descendant::dl[attribute::class=\"is24-res-details\"]/descendant::dd[position()=3]");
+        var Zimmer_tag = document.DocumentNode.SelectNodes("/descendant::ol/descendant::li[attribute::class=\"is24-res-entry\"]/descendant::dl[attribute::class=\"is24-res-details\"]/descendant::dt[text()=\"Zimmer: \"]/following::dd[position()=1]");
 
         string[] res;
         int count = atags.Count;
