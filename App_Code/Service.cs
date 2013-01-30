@@ -152,20 +152,10 @@ public class Service : IService
             // Convertierungen
             Flaeche = Flaeche.Replace("m&sup2", "m²");
 
-            Header = Header.Replace("&auml;", "ä");
-            Header = Header.Replace("&Auml;", "Ä");
-
-            Header = Header.Replace("&uuml;", "ü");
-            Header = Header.Replace((char)65533+"", "Ü");
-
-            Header = Header.Replace("&ouml;", "ö");
-            Header = Header.Replace("&Ouml;", "Ö");
-
-            Header = Header.Replace("&szlig;", "ß");
 
             //Im gesplitteten Array 
             //         0               1              2              3               4 
-            res[i] = Header + "äöüß;" + Picture + ";" + Miete + ";" + Flaeche + ";" + Zimmer;
+            res[i] = Header + ";" + Picture + ";" + Miete + ";" + Flaeche + ";" + Zimmer;
 
         }
         
