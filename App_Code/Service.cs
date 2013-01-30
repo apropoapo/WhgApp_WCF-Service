@@ -156,7 +156,7 @@ public class Service : IService
             Header = Header.Replace("&Auml;", "Ä");
 
             Header = Header.Replace("&uuml;", "ü");
-            Header = Header.Replace("&Uuml;", "Ü");
+            Header = Header.Replace((char)65533+"", "Ü");
 
             Header = Header.Replace("&ouml;", "ö");
             Header = Header.Replace("&Ouml;", "Ö");
