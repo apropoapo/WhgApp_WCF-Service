@@ -159,7 +159,7 @@ public class Service : IService
 
             //Im gesplitteten Array 
             //         0               1              2              3               4 
-            res[i] = Header + ";:;" + Picture + ";:;" + Miete + ";:;" + Zimmer + ";:;" + Flaeche;
+            res[i] = Header + ";:;" + Picture + ";:;" + Miete + ";:;" + Zimmer + ";:;" + Flaeche + ";:;";
 
         }
         
