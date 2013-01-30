@@ -112,18 +112,21 @@ public class Service : IService
     public string[] getWhgs(string url)
     {
 
-        //string testuri = "http://www.immobilienscout24.de/Suche/S-82/Wohnung-Miete/Bayern/Muenchen/Altstadt_Am-Hart_Freimann_Haidhausen_Laim_Lehel_Ludwigsvorstadt-Isarvorstadt_Maxvorstadt_Neuhausen_Nymphenburg_Schwabing_Schwabing-West_Schwanthalerhoehe_Sendling_Thalkirchen/2,00-3,00/-/EURO-450,00-800,00";
+   
         var webGet = new HtmlWeb();
         var document = webGet.Load(url);
 
         var atags = document.DocumentNode.SelectNodes("/descendant::ol/descendant::li[attribute::class=\"is24-res-entry\"]/descendant::a[position()=1]");
         var picture_tag = document.DocumentNode.SelectNodes("/descendant::ol/descendant::li[attribute::class=\"is24-res-entry\"]/descendant::a[position()=2]/descendant::img");
-        //var Miete_tag = document.DocumentNode.SelectNodes("/descendant::ol/descendant::li[attribute::class=\"is24-res-entry\"]/descendant::dl[attribute::class=\"is24-res-details\"]/descendant::dd[position()=1]");
         var Miete_tag = document.DocumentNode.SelectNodes("/descendant::ol/descendant::li[attribute::class=\"is24-res-entry\"]/descendant::dl[attribute::class=\"is24-res-details\"]/descendant::dt[text()=\"Kaltmiete: \"]/following::dd[position()=1]");
-       // var Flaeche_tag = document.DocumentNode.SelectNodes("/descendant::ol/descendant::li[attribute::class=\"is24-res-entry\"]/descendant::dl[attribute::class=\"is24-res-details\"]/descendant::dd[position()=2]");
         var Flaeche_tag = document.DocumentNode.SelectNodes("/descendant::ol/descendant::li[attribute::class=\"is24-res-entry\"]/descendant::dl[attribute::class=\"is24-res-details\"]/descendant::dt[text()=\" Wohnfl&auml;che: \"]/following::dd[position()=1]");
-        //var Zimmer_tag = document.DocumentNode.SelectNodes("/descendant::ol/descendant::li[attribute::class=\"is24-res-entry\"]/descendant::dl[attribute::class=\"is24-res-details\"]/descendant::dd[position()=3]");
         var Zimmer_tag = document.DocumentNode.SelectNodes("/descendant::ol/descendant::li[attribute::class=\"is24-res-entry\"]/descendant::dl[attribute::class=\"is24-res-details\"]/descendant::dt[text()=\"Zimmer: \"]/following::dd[position()=1]");
+        var detail1_tag = document.DocumentNode.SelectNodes("/descendant::ol/descendant::li[attribute::class=\"is24-res-entry\"]/descendant::ul[attribute::class=\"is24-checklist\"]/descendant::li[position()=1]");
+        var detail2_tag = document.DocumentNode.SelectNodes("/descendant::ol/descendant::li[attribute::class=\"is24-res-entry\"]/descendant::ul[attribute::class=\"is24-checklist\"]/descendant::li[position()=2]");
+        var detail3_tag = document.DocumentNode.SelectNodes("/descendant::ol/descendant::li[attribute::class=\"is24-res-entry\"]/descendant::ul[attribute::class=\"is24-checklist\"]/descendant::li[position()=3]");
+        var detail4_tag = document.DocumentNode.SelectNodes("/descendant::ol/descendant::li[attribute::class=\"is24-res-entry\"]/descendant::ul[attribute::class=\"is24-checklist\"]/descendant::li[position()=4]");
+      //  var detail1_tag = document.DocumentNode.SelectNodes("/descendant::ol/descendant::li[attribute::class=\"is24-res-entry\"]/descendant::ul[attribute::class=\"is24-checklist\"]/descendant::li[position()=1]");
+
 
         string[] res;
         int count = atags.Count;
@@ -141,8 +144,7 @@ public class Service : IService
         }
 
 
-        //Console.WriteLine("List scout.");
-        //int i = 0;
+
 
         for (int i = 0; i < count; i++)
         {
@@ -151,13 +153,13 @@ public class Service : IService
             string Miete = Miete_tag[i].InnerText.Trim();
             string Flaeche = Flaeche_tag[i].InnerText.Trim();
             string Zimmer = Zimmer_tag[i].InnerText.Trim();
-            //if (Header == n
+
             // Convertierungen
             Flaeche = Flaeche.Replace("m&sup2;", "m²");
 
             //Im gesplitteten Array 
-            //         0               1              2              3               4 
-            res[i] = Header + ";:;" + Picture + ";:;" + Miete + ";:;" + Zimmer + ";:;" + Flaeche + ";:;";
+            //         0               1                 2               3                  4                   5                     6                     7                    8
+            res[i] = Header + ";:;" + Picture + ";:;" + Miete + ";:;" + Zimmer + ";:;" + Flaeche + ";:;" + detail1_tag + ";:;" + detail2_tag + ";:;" + detail3_tag + ";:;" + detail4_tag;
 
         }
         
