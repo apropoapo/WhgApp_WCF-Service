@@ -153,9 +153,7 @@ public class Service : IService
             string Zimmer = Zimmer_tag[i].InnerText.Trim();
             //if (Header == n
             // Convertierungen
-            Flaeche = Flaeche.Replace("m&sup2", "m²");
-            Header = Header.Replace("m&sup2", "m²");
-
+            Flaeche = Flaeche.Replace("m&sup2;", "m²");
 
             //Im gesplitteten Array 
             //         0               1              2              3               4 
