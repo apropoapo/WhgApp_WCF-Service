@@ -181,7 +181,8 @@ public class Service : IService
             {
                 foreach (var tag in detail_tag)
                 {
-                    detailArray[k] += tag.InnerText.Trim();
+                    detailArray[k] = tag.InnerText.Trim();
+                    k++;
                 }
             }
 
