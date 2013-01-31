@@ -170,16 +170,29 @@ public class Service : IService
             // Convertierungen
             Flaeche = Flaeche.Replace("m&sup2;", "m²");
 
-            //Im gesplitteten Array
-            //         0               1                 2               3                  4                5                  6                  7                8
-            res[i] = Header + ";:;" + Picture + ";:;" + Miete + ";:;" + Zimmer + ";:;" + Flaeche + ";:;"; // +detail4;
+            string[] detailArray = new string[4];
+            detailArray[0] = " ";
+            detailArray[1] = " ";
+            detailArray[2] = " ";
+            detailArray[3] = " ";
+
+            int k = 0;
             if (detail_tag != null)
             {
                 foreach (var tag in detail_tag)
                 {
-                    res[i] += tag.InnerText.Trim() + ";:;";
+                    detailArray[k] += tag.InnerText.Trim();
                 }
             }
+
+
+
+            //Im gesplitteten Array
+            //         0               1                 2               3                  4                      5                       6                          7                      8
+            res[i] = Header + ";:;" + Picture + ";:;" + Miete + ";:;" + Zimmer + ";:;" + Flaeche + ";:;" + detailArray[0] + ";:;" + detailArray[1] + ";:;" + detailArray[2] + ";:;" + detailArray[3] + ";:;";
+
+
+
         }
 
         /*
