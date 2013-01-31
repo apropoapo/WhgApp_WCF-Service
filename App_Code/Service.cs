@@ -112,7 +112,7 @@ public class Service : IService
     public string[] getWhgs(string url)
     {
 
-   
+
         var webGet = new HtmlWeb();
         var document = webGet.Load(url);
 
@@ -121,11 +121,11 @@ public class Service : IService
         var Miete_tag = document.DocumentNode.SelectNodes("/descendant::ol/descendant::li[attribute::class=\"is24-res-entry\"]/descendant::dl[attribute::class=\"is24-res-details\"]/descendant::dt[text()=\"Kaltmiete: \"]/following::dd[position()=1]");
         var Flaeche_tag = document.DocumentNode.SelectNodes("/descendant::ol/descendant::li[attribute::class=\"is24-res-entry\"]/descendant::dl[attribute::class=\"is24-res-details\"]/descendant::dt[text()=\" Wohnfl&auml;che: \"]/following::dd[position()=1]");
         var Zimmer_tag = document.DocumentNode.SelectNodes("/descendant::ol/descendant::li[attribute::class=\"is24-res-entry\"]/descendant::dl[attribute::class=\"is24-res-details\"]/descendant::dt[text()=\"Zimmer: \"]/following::dd[position()=1]");
-        var detail1_tag = document.DocumentNode.SelectNodes("/descendant::ol/descendant::li[attribute::class=\"is24-res-entry\"]/descendant::ul[attribute::class=\"is24-checklist\"]/descendant::li[position()=1]");
-        var detail2_tag = document.DocumentNode.SelectNodes("/descendant::ol/descendant::li[attribute::class=\"is24-res-entry\"]/descendant::ul[attribute::class=\"is24-checklist\"]/descendant::li[position()=2]");
-        var detail3_tag = document.DocumentNode.SelectNodes("/descendant::ol/descendant::li[attribute::class=\"is24-res-entry\"]/descendant::ul[attribute::class=\"is24-checklist\"]/descendant::li[position()=3]");
-        var detail4_tag = document.DocumentNode.SelectNodes("/descendant::ol/descendant::li[attribute::class=\"is24-res-entry\"]/descendant::ul[attribute::class=\"is24-checklist\"]/descendant::li[position()=4]");
-      //  var detail1_tag = document.DocumentNode.SelectNodes("/descendant::ol/descendant::li[attribute::class=\"is24-res-entry\"]/descendant::ul[attribute::class=\"is24-checklist\"]/descendant::li[position()=1]");
+        //  var detail_tag = document.DocumentNode.SelectNodes("(/descendant::ol/descendant::li[attribute::class=\"is24-res-entry\"]/descendant::ul[attribute::class=\"is24-checklist\"])[position()=1]/descendant::li");
+        // var detail2_tag = document.DocumentNode.SelectNodes("/descendant::ol/descendant::li[attribute::class=\"is24-res-entry\"]/descendant::ul[attribute::class=\"is24-checklist\"]/descendant::li[position()=2]");
+        //  var detail3_tag = document.DocumentNode.SelectNodes("/descendant::ol/descendant::li[attribute::class=\"is24-res-entry\"]/descendant::ul[attribute::class=\"is24-checklist\"]/descendant::li[position()=3]");
+        //  var detail4_tag = document.DocumentNode.SelectNodes("/descendant::ol/descendant::li[attribute::class=\"is24-res-entry\"]/descendant::ul[attribute::class=\"is24-checklist\"]/descendant::li[position()=4]");
+        //  var detail1_tag = document.DocumentNode.SelectNodes("/descendant::ol/descendant::li[attribute::class=\"is24-res-entry\"]/descendant::ul[attribute::class=\"is24-checklist\"]/descendant::li[position()=1]");
 
 
         string[] res;
@@ -153,10 +153,18 @@ public class Service : IService
             string Miete = Miete_tag[i].InnerText.Trim();
             string Flaeche = Flaeche_tag[i].InnerText.Trim();
             string Zimmer = Zimmer_tag[i].InnerText.Trim();
-            string detail1 = detail1_tag[i].InnerText.Trim();
-            string detail2 = detail2_tag[i].InnerText.Trim();
-            string detail3 = detail3_tag[i].InnerText.Trim();
-            string detail4 = detail4_tag[i].InnerText.Trim();
+            int j = i + 1;
+            var detail_tag = document.DocumentNode.SelectNodes("(/descendant::ol/descendant::li[attribute::class=\"is24-res-entry\"]/descendant::ul[attribute::class=\"is24-checklist\"])[position()=" + j + "]/descendant::li");
+
+
+            // int countdetail = detail_tag.Count;
+
+            // string detail1 = detail1_tag[i].InnerText.Trim();
+            // string detail2 = detail2_tag[i].InnerText.Trim();
+            // string detail3 = " ";
+            //if (detail_tag[i].InnerText != null)
+            //  detail3 = detail3_tag[i].InnerText.Trim();
+            //string detail4 = detail4_tag[i].InnerText.Trim();
 
 
             // Convertierungen
@@ -164,10 +172,16 @@ public class Service : IService
 
             //Im gesplitteten Array
             //         0               1                 2               3                  4                5                  6                  7                8
-            res[i] = Header + ";:;" + Picture + ";:;" + Miete + ";:;" + Zimmer + ";:;" + Flaeche + ";:;" + detail1 + ";:;" + detail2 + ";:;" + detail3 + ";:;" + detail4;
-
+            res[i] = Header + ";:;" + Picture + ";:;" + Miete + ";:;" + Zimmer + ";:;" + Flaeche + ";:;"; // +detail4;
+            if (detail_tag != null)
+            {
+                foreach (var tag in detail_tag)
+                {
+                    res[i] += tag.InnerText.Trim() + ";:;";
+                }
+            }
         }
-        
+
         /*
          *
         foreach (var tag in atags)
