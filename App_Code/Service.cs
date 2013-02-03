@@ -126,7 +126,7 @@ public class Service : IService
         //  var detail3_tag = document.DocumentNode.SelectNodes("/descendant::ol/descendant::li[attribute::class=\"is24-res-entry\"]/descendant::ul[attribute::class=\"is24-checklist\"]/descendant::li[position()=3]");
         //  var detail4_tag = document.DocumentNode.SelectNodes("/descendant::ol/descendant::li[attribute::class=\"is24-res-entry\"]/descendant::ul[attribute::class=\"is24-checklist\"]/descendant::li[position()=4]");
         //  var detail1_tag = document.DocumentNode.SelectNodes("/descendant::ol/descendant::li[attribute::class=\"is24-res-entry\"]/descendant::ul[attribute::class=\"is24-checklist\"]/descendant::li[position()=1]");
-
+        var lage_tag = document.DocumentNode.SelectNodes("/descendant::ol/descendant::li/descendant::p[attribute::class=\"is24-address\"]/descendant::span[attribute::class=\"address is24-hide\"]");
 
         string[] res;
         int count = atags.Count;
@@ -157,7 +157,10 @@ public class Service : IService
             var detail_tag = document.DocumentNode.SelectNodes("(/descendant::ol/descendant::li[attribute::class=\"is24-res-entry\"]/descendant::ul[attribute::class=\"is24-checklist\"])[position()=" + j + "]/descendant::li");
             string link1 = atags[i].Attributes["onclick"].Value.Trim();
             string link2 = atags[i].Attributes["href"].Value;
+            string lage = lage_tag[i].InnerText.Trim();
 
+
+            // Umformungen/Substrings und so
             string[] linkArray1, linkArray2;
             string[] sep = new string[1];
             sep[0] = "searchUrl=";
@@ -165,6 +168,8 @@ public class Service : IService
             linkArray2 = link2.Split(';');
 
             string link_komplett = linkArray2[0] + "?navigationServiceUrl=/search/resultList/exposeNavigation/navigate.go?searchUrl%3D" + linkArray1[1].Replace(';', '/');
+
+
 
             // int countdetail = detail_tag.Count;
 
@@ -198,8 +203,8 @@ public class Service : IService
 
 
             //Im gesplitteten Array
-            //         0               1                 2               3                  4                      5                       6                          7                      8                      9
-            res[i] = Header + ";:;" + Picture + ";:;" + Miete + ";:;" + Zimmer + ";:;" + Flaeche + ";:;" + detailArray[0] + ";:;" + detailArray[1] + ";:;" + detailArray[2] + ";:;" + detailArray[3] + ";:;" + link_komplett + ";:;";
+            //         0               1                 2               3                  4                      5                       6                          7                      8                      9                   10
+            res[i] = Header + ";:;" + Picture + ";:;" + Miete + ";:;" + Zimmer + ";:;" + Flaeche + ";:;" + detailArray[0] + ";:;" + detailArray[1] + ";:;" + detailArray[2] + ";:;" + detailArray[3] + ";:;" + link_komplett + ";:;" + lage + ";:;"; 
 
 
 
