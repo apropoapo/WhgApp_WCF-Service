@@ -155,7 +155,12 @@ public class Service : IService
             string Zimmer = Zimmer_tag[i].InnerText.Trim();
             int j = i + 1;
             var detail_tag = document.DocumentNode.SelectNodes("(/descendant::ol/descendant::li[attribute::class=\"is24-res-entry\"]/descendant::ul[attribute::class=\"is24-checklist\"])[position()=" + j + "]/descendant::li");
+            string link = atags[i].Attributes["onclick"].Value.Trim();
 
+            string[] linkArray;
+            string[] sep = new string[1];
+            sep[0] = "searchUrl=";
+            linkArray = link.Split(sep, System.StringSplitOptions.None);
 
             // int countdetail = detail_tag.Count;
 
@@ -190,7 +195,7 @@ public class Service : IService
 
             //Im gesplitteten Array
             //         0               1                 2               3                  4                      5                       6                          7                      8
-            res[i] = Header + ";:;" + Picture + ";:;" + Miete + ";:;" + Zimmer + ";:;" + Flaeche + ";:;" + detailArray[0] + ";:;" + detailArray[1] + ";:;" + detailArray[2] + ";:;" + detailArray[3] + ";:;";
+            res[i] = Header + ";:;" + Picture + ";:;" + Miete + ";:;" + Zimmer + ";:;" + Flaeche + ";:;" + detailArray[0] + ";:;" + detailArray[1] + ";:;" + detailArray[2] + ";:;" + detailArray[3] + ";:;" + linkArray[1] + ";:;";
 
 
 
