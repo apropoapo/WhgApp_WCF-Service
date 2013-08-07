@@ -12,13 +12,15 @@ using HtmlAgilityPack;
 // NOTE: You can use the "Rename" command on the "Refactor" menu to change the class name "Service" in code, svc and config file together.
 public class Service : IService
 {
+
+    const string CONSTRING = "Server=instance29437.db.xeround.com;Port=19153;Database=users;Uid=appharbor;Pwd=NNDKjRzh";
+
 	public int plusplus(int v1, int v2)
 	{
         return v1 + v2;
 	}
 
-    const string CONSTRING = "Server=instance29437.db.xeround.com;Port=19153;Database=users;Uid=appharbor;Pwd=NNDKjRzh";
-
+    
     public bool addUser(int changed, string PushNotificationUri, int delete, int UsePushNotifications, string UniqueID, string ImmoscoutURL)
     {
         //connect
@@ -35,7 +37,7 @@ public class Service : IService
         if (count_result == 0)
         {
             //SQL Insert durchführen
-            string cmdInsertText = "INSERT INTO myapptable (ID, changed, PushNotificationUri, `delete`, UsePushNotifications, UniqueID, ImmoscoutURL) values ( 0, " + changed + ", '" + PushNotificationUri + "', " + delete + ", " + UsePushNotifications + ", '" + UniqueID + "', '" + ImmoscoutURL + "');";
+            string cmdInsertText = "INSERT INTO myapptable (ID, changed, PushNotificationUri, deleted, UsePushNotifications, UniqueID, ImmoscoutURL) values ( 0, " + changed + ", '" + PushNotificationUri + "', " + delete + ", " + UsePushNotifications + ", '" + UniqueID + "', '" + ImmoscoutURL + "');";
             MySqlCommand cmdInsert = new MySqlCommand(cmdInsertText, con);
             cmdInsert.ExecuteNonQuery();
 
@@ -43,7 +45,7 @@ public class Service : IService
         else
         {
             // SQL Update durchführen
-            string cmdUpdateText = "UPDATE myapptable SET changed=" + changed + ", PushNotificationUri='" + PushNotificationUri + "', `delete`=" + delete + ", UsePushNotifications=" + UsePushNotifications + ", ImmoscoutURL='" + ImmoscoutURL +"' WHERE UniqueID='" + UniqueID + "';";
+            string cmdUpdateText = "UPDATE myapptable SET changed=" + changed + ", PushNotificationUri='" + PushNotificationUri + "', deleted=" + delete + ", UsePushNotifications=" + UsePushNotifications + ", ImmoscoutURL='" + ImmoscoutURL +"' WHERE UniqueID='" + UniqueID + "';";
             MySqlCommand cmdUpdate = new MySqlCommand(cmdUpdateText, con);
             cmdUpdate.ExecuteNonQuery();
         }
