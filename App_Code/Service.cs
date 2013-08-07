@@ -13,7 +13,7 @@ using HtmlAgilityPack;
 public class Service : IService
 {
 
-    const string CONSTRING = "Server=instance29437.db.xeround.com;Port=19153;Database=users;Uid=appharbor;Pwd=NNDKjRzh";
+    const string CONSTRING = "server=8a1732a4-5501-4f63-ae2f-a213015171ab.mysql.sequelizer.com;database=db8a1732a455014f63ae2fa213015171ab;uid=tvzwzpkdytttjbtm;pwd=LZDsGqmDUXQBiRJrfALZZCZmiWgwBZgi4JYdu4pBNzgg467pjBP4z4Ki8rjSjWc4";
 
 	public int plusplus(int v1, int v2)
 	{
