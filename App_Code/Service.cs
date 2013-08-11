@@ -118,18 +118,13 @@ public class Service : IService
         var webGet = new HtmlWeb();
         var document = webGet.Load(url);
 
-        var atags = document.DocumentNode.SelectNodes("/descendant::ol/descendant::li[attribute::class=\"is24-res-entry\"]/descendant::a[position()=1]");
-        var picture_tag = document.DocumentNode.SelectNodes("/descendant::ol/descendant::li[attribute::class=\"is24-res-entry\"]/descendant::a[position()=2]/descendant::img");
-        var Miete_tag = document.DocumentNode.SelectNodes("/descendant::ol/descendant::li[attribute::class=\"is24-res-entry\"]/descendant::dl[attribute::class=\"is24-res-details\"]/descendant::dt[text()=\"Kaltmiete: \"]/following::dd[position()=1]");
-        var Flaeche_tag = document.DocumentNode.SelectNodes("/descendant::ol/descendant::li[attribute::class=\"is24-res-entry\"]/descendant::dl[attribute::class=\"is24-res-details\"]/descendant::dt[text()=\" Wohnfl&auml;che: \"]/following::dd[position()=1]");
-        var Zimmer_tag = document.DocumentNode.SelectNodes("/descendant::ol/descendant::li[attribute::class=\"is24-res-entry\"]/descendant::dl[attribute::class=\"is24-res-details\"]/descendant::dt[text()=\"Zimmer: \"]/following::dd[position()=1]");
-        //  var detail_tag = document.DocumentNode.SelectNodes("(/descendant::ol/descendant::li[attribute::class=\"is24-res-entry\"]/descendant::ul[attribute::class=\"is24-checklist\"])[position()=1]/descendant::li");
-        // var detail2_tag = document.DocumentNode.SelectNodes("/descendant::ol/descendant::li[attribute::class=\"is24-res-entry\"]/descendant::ul[attribute::class=\"is24-checklist\"]/descendant::li[position()=2]");
-        //  var detail3_tag = document.DocumentNode.SelectNodes("/descendant::ol/descendant::li[attribute::class=\"is24-res-entry\"]/descendant::ul[attribute::class=\"is24-checklist\"]/descendant::li[position()=3]");
-        //  var detail4_tag = document.DocumentNode.SelectNodes("/descendant::ol/descendant::li[attribute::class=\"is24-res-entry\"]/descendant::ul[attribute::class=\"is24-checklist\"]/descendant::li[position()=4]");
-        //  var detail1_tag = document.DocumentNode.SelectNodes("/descendant::ol/descendant::li[attribute::class=\"is24-res-entry\"]/descendant::ul[attribute::class=\"is24-checklist\"]/descendant::li[position()=1]");
-        var lage_tag = document.DocumentNode.SelectNodes("/descendant::ol/descendant::li/descendant::p[attribute::class=\"is24-address\"]/descendant::span[attribute::class=\"address is24-hide\"]");
-        var id_tag = document.DocumentNode.SelectNodes("/descendant::ol/descendant::li[attribute::class=\"is24-res-entry\"]");
+        var atags = document.DocumentNode.SelectNodes("/descendant::li[attribute::class=\"media medialist box\"]/descendant::div[attribute::class=\"medialist__content\"]/descendant::a[position()=1]");
+        var picture_tag = document.DocumentNode.SelectNodes("/descendant::li[attribute::class=\"media medialist box\"]/descendant::div[attribute::class=\"medialist__objects-wrapper\"]/descendant::a[attribute::class=\"preview box\"]/descendant::img");
+        var Miete_tag = document.DocumentNode.SelectNodes("/descendant::li[attribute::class=\"media medialist box\"]/descendant::div[attribute::class=\"line medialist__criteria hideable \"]/descendant::dd[attribute::class=\"value\" and position()=1]");
+        var Flaeche_tag = document.DocumentNode.SelectNodes("/descendant::li[attribute::class=\"media medialist box\"]/descendant::div[attribute::class=\"line medialist__criteria hideable \"]/descendant::dd[attribute::class=\"value\" and position()=2]");
+        var Zimmer_tag = document.DocumentNode.SelectNodes("/descendant::li[attribute::class=\"media medialist box\"]/descendant::div[attribute::class=\"line medialist__criteria hideable \"]/descendant::dd[attribute::class=\"value\" and position()=3]");
+        var lage_tag = document.DocumentNode.SelectNodes("/descendant::li[attribute::class=\"media medialist box\"]/descendant::div[attribute::class=\"medialist__heading-wrapper\"]/descendant::p[attribute::class=\"medialist__address mts hideable\"]");
+        var id_tag = document.DocumentNode.SelectNodes("/descendant::li[attribute::class=\"media medialist box\"]");
 
 
         string[] res;
@@ -158,7 +153,7 @@ public class Service : IService
             string Flaeche = Flaeche_tag[i].InnerText.Trim();
             string Zimmer = Zimmer_tag[i].InnerText.Trim();
             int j = i + 1;
-            var detail_tag = document.DocumentNode.SelectNodes("(/descendant::ol/descendant::li[attribute::class=\"is24-res-entry\"]/descendant::ul[attribute::class=\"is24-checklist\"])[position()=" + j + "]/descendant::li");
+            var detail_tag = document.DocumentNode.SelectNodes("/descendant::li[attribute::class=\"media medialist box\"][position()=" + j +"]/descendant::ul[attribute::class=\"medialist__criteria-secondary unstyled inline mts hideable\"]/descendant::li[attribute::class=\"title\"]");
        //     string link1 = atags[i].Attributes["onclick"].Value.Trim();
        //     string link2 = atags[i].Attributes["href"].Value;
             string lage = lage_tag[i].InnerText.Trim();
