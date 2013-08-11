@@ -157,7 +157,7 @@ public class Service : IService
        //     string link1 = atags[i].Attributes["onclick"].Value.Trim();
        //     string link2 = atags[i].Attributes["href"].Value;
             string lage = lage_tag[i].InnerText.Trim();
-            string ID = id_tag[i].Attributes["data-realEstateId"].Value.Trim();
+            string ID = id_tag[i].Attributes["id"].Value.Trim();
 
 
             // Umformungen/Substrings und so
