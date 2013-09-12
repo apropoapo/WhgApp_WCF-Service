@@ -123,7 +123,7 @@ public class Service : IService
         var Miete_tag = document.DocumentNode.SelectNodes("/descendant::li[attribute::class=\"media medialist box\"]/descendant::div[attribute::class=\"line medialist__criteria hideable \"]/descendant::dd[attribute::class=\"value\" and position()=1]");
         var Flaeche_tag = document.DocumentNode.SelectNodes("/descendant::li[attribute::class=\"media medialist box\"]/descendant::div[attribute::class=\"line medialist__criteria hideable \"]/descendant::dd[attribute::class=\"value\" and position()=2]");
         var Zimmer_tag = document.DocumentNode.SelectNodes("/descendant::li[attribute::class=\"media medialist box\"]/descendant::div[attribute::class=\"line medialist__criteria hideable \"]/descendant::dd[attribute::class=\"value\" and position()=3]");
-        var lage_tag = document.DocumentNode.SelectNodes("/descendant::li[attribute::class=\"media medialist box\"]/descendant::div[attribute::class=\"medialist__heading-wrapper\"]/descendant::p[attribute::class=\"medialist__address mts hideable\"]");
+        var lage_tag = document.DocumentNode.SelectNodes("/descendant::li[attribute::class=\"media medialist box\"]/descendant::div[attribute::class=\"medialist__heading-wrapper\"]/descendant::p[attribute::class=\"medialist__address hideable\"]");
         var id_tag = document.DocumentNode.SelectNodes("/descendant::li[attribute::class=\"media medialist box\"]");
 
 
