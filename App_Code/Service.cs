@@ -120,9 +120,9 @@ public class Service : IService
 
         var atags = document.DocumentNode.SelectNodes("/descendant::li[attribute::class=\"media medialist box\"]/descendant::div[attribute::class=\"medialist__content\"]/descendant::a[position()=1]");
         var picture_tag = document.DocumentNode.SelectNodes("/descendant::li[attribute::class=\"media medialist box\"]/descendant::div[attribute::class=\"medialist__objects-wrapper\"]/descendant::a[attribute::class=\"preview box\"]/descendant::img");
-        var Miete_tag = document.DocumentNode.SelectNodes("/descendant::li[attribute::class=\"media medialist box\"]/descendant::div[attribute::class=\"line medialist__criteria hideable \"]/descendant::dd[attribute::class=\"value\" and position()=1]");
-        var Flaeche_tag = document.DocumentNode.SelectNodes("/descendant::li[attribute::class=\"media medialist box\"]/descendant::div[attribute::class=\"line medialist__criteria hideable \"]/descendant::dd[attribute::class=\"value\" and position()=2]");
-        var Zimmer_tag = document.DocumentNode.SelectNodes("/descendant::li[attribute::class=\"media medialist box\"]/descendant::div[attribute::class=\"line medialist__criteria hideable \"]/descendant::dd[attribute::class=\"value\" and position()=3]");
+        var Miete_tag = document.DocumentNode.SelectNodes("/descendant::li[attribute::class=\"media medialist box\"]/descendant::dl[attribute::class=\"criteria pull-left\"]/descendant::dt[attribute::class=\"title\" and text()=\"Kaltmiete\"]/following-sibling::dd[attribute::class=\"value\"]");
+        var Flaeche_tag = document.DocumentNode.SelectNodes("/descendant::li[attribute::class=\"media medialist box\"]/descendant::dl[attribute::class=\"criteria pull-left\"]/descendant::dt[attribute::class=\"title\" and text()=\"Zimmer\"]/following-sibling::dd[attribute::class=\"value\"]");
+        var Zimmer_tag = document.DocumentNode.SelectNodes("/descendant::li[attribute::class=\"media medialist box\"]/descendant::dl[attribute::class=\"criteria pull-left\"]/descendant::dt[attribute::class=\"title\" and text()=\"Wohnfl&auml;che\"]/following-sibling::dd[attribute::class=\"value\"]");
         var lage_tag = document.DocumentNode.SelectNodes("/descendant::li[attribute::class=\"media medialist box\"]/descendant::div[attribute::class=\"medialist__heading-wrapper\"]/descendant::p[attribute::class=\"medialist__address hideable\"]");
         var id_tag = document.DocumentNode.SelectNodes("/descendant::li[attribute::class=\"media medialist box\"]");
 
