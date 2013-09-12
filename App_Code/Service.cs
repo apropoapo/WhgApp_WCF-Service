@@ -159,6 +159,7 @@ public class Service : IService
             string lage = lage_tag[i].InnerText.Trim();
             string ID = id_tag[i].Attributes["id"].Value.Trim();
 
+            ID = ID.Split('-')[1];
 
             // Umformungen/Substrings und so
          //   string[] linkArray1, linkArray2;
