@@ -205,9 +205,15 @@ public class Service : IService
 
             //Im gesplitteten Array
             //         0               1                 2               3                  4                      5                       6                          7                      8                      9                   10
-            res[i] = Header + ";:;" + Picture + ";:;" + Miete + ";:;" + Zimmer + ";:;" + Flaeche + ";:;" + detailArray[0] + ";:;" + detailArray[1] + ";:;" + detailArray[2] + ";:;" + detailArray[3] + ";:;" + ID + ";:;" + lage + ";:;"; 
+            res[i] = Header + ";:;" + Picture + ";:;" + Miete + ";:;" + Zimmer + ";:;" + Flaeche + ";:;" + detailArray[0] + ";:;" + detailArray[1] + ";:;" + detailArray[2] + ";:;" + detailArray[3] + ";:;" + ID + ";:;" + lage + ";:;";
 
-
+            res[i] = res[i].Replace("&uuml;", "ü");
+            res[i] = res[i].Replace("&auml;", "ä");
+            res[i] = res[i].Replace("&ouml;", "ö");
+            res[i] = res[i].Replace("&Uuml;", "Ü");
+            res[i] = res[i].Replace("&Auml;", "Ä");
+            res[i] = res[i].Replace("&Ouml;", "Ö");
+            res[i] = res[i].Replace("&euro;", "€");
 
         }
 
