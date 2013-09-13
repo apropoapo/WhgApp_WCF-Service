@@ -8,6 +8,7 @@ using System.Text;
 using MySql.Data.MySqlClient;
 using System.Net;
 using HtmlAgilityPack;
+using System.IO;
 
 // NOTE: You can use the "Rename" command on the "Refactor" menu to change the class name "Service" in code, svc and config file together.
 public class Service : IService
@@ -113,16 +114,17 @@ public class Service : IService
 
     public string[] getWhgs(string url)
     {
+        HtmlAgilityPack.HtmlDocument document = new HtmlAgilityPack.HtmlDocument();
+        StreamReader reader = new StreamReader(WebRequest.Create(url).GetResponse().GetResponseStream(), Encoding.GetEncoding("iso-8859-1"));
+        String htmlString = reader.ReadToEnd();
+        document.LoadHtml(WebUtility.HtmlDecode(htmlString));
 
-
-        var webGet = new HtmlWeb();
-        var document = webGet.Load(url);
 
         var atags = document.DocumentNode.SelectNodes("/descendant::li[attribute::class=\"media medialist box\"]/descendant::div[attribute::class=\"medialist__content\"]/descendant::a[position()=1]");
         var picture_tag = document.DocumentNode.SelectNodes("/descendant::li[attribute::class=\"media medialist box\"]/descendant::div[attribute::class=\"medialist__objects-wrapper\"]/descendant::a[attribute::class=\"preview box\"]/descendant::img");
         var Miete_tag = document.DocumentNode.SelectNodes("/descendant::li[attribute::class=\"media medialist box\"]/descendant::dl[attribute::class=\"criteria pull-left\"]/descendant::dt[attribute::class=\"title\" and (text()=\"Kaltmiete\" or text()=\"Kaufpreis\")]/following-sibling::dd[attribute::class=\"value\"]");
         var Flaeche_tag = document.DocumentNode.SelectNodes("/descendant::li[attribute::class=\"media medialist box\"]/descendant::dl[attribute::class=\"criteria pull-left\"]/descendant::dt[attribute::class=\"title\" and text()=\"Zimmer\"]/following-sibling::dd[attribute::class=\"value\"]");
-        var Zimmer_tag = document.DocumentNode.SelectNodes("/descendant::li[attribute::class=\"media medialist box\"]/descendant::dl[attribute::class=\"criteria pull-left\"]/descendant::dt[attribute::class=\"title\" and text()=\"Wohnfl&auml;che\"]/following-sibling::dd[attribute::class=\"value\"]");
+        var Zimmer_tag = document.DocumentNode.SelectNodes("/descendant::li[attribute::class=\"media medialist box\"]/descendant::dl[attribute::class=\"criteria pull-left\"]/descendant::dt[attribute::class=\"title\" and text()=\"Wohnfläche\"]/following-sibling::dd[attribute::class=\"value\"]");
         var lage_tag = document.DocumentNode.SelectNodes("/descendant::li[attribute::class=\"media medialist box\"]/descendant::div[attribute::class=\"medialist__heading-wrapper\"]/descendant::p[attribute::class=\"medialist__address hideable\"]");
         var id_tag = document.DocumentNode.SelectNodes("/descendant::li[attribute::class=\"media medialist box\"]");
 
@@ -153,37 +155,14 @@ public class Service : IService
             string Flaeche = Flaeche_tag[i].InnerText.Trim();
             string Zimmer = Zimmer_tag[i].InnerText.Trim();
             int j = i + 1;
-            var detail_tag = document.DocumentNode.SelectNodes("/descendant::li[attribute::class=\"media medialist box\"][position()=" + j +"]/descendant::ul[attribute::class=\"medialist__criteria-secondary unstyled inline mts hideable\"]/descendant::li[attribute::class=\"title\"]");
-       //     string link1 = atags[i].Attributes["onclick"].Value.Trim();
-       //     string link2 = atags[i].Attributes["href"].Value;
+            var detail_tag = document.DocumentNode.SelectNodes("/descendant::li[attribute::class=\"media medialist box\"][position()=" + j + "]/descendant::ul[attribute::class=\"medialist__criteria-secondary unstyled inline mts hideable\"]/descendant::li[attribute::class=\"title\"]");
+            //     string link1 = atags[i].Attributes["onclick"].Value.Trim();
+            //     string link2 = atags[i].Attributes["href"].Value;
             string lage = lage_tag[i].InnerText.Trim();
             string ID = id_tag[i].Attributes["id"].Value.Trim();
 
             ID = ID.Split('-')[1];
 
-            // Umformungen/Substrings und so
-         //   string[] linkArray1, linkArray2;
-       //     string[] sep = new string[1];
-         //   sep[0] = "searchUrl=";
-        //    linkArray1 = link1.Split(sep, System.StringSplitOptions.None);
-        //    linkArray2 = link2.Split(';');
-
-           // string link_komplett = linkArray2[0];
-
-
-
-            // int countdetail = detail_tag.Count;
-
-            // string detail1 = detail1_tag[i].InnerText.Trim();
-           //  string detail2 = detail2_tag[i].InnerText.Trim();
-            // string detail3 = " ";
-            //if (detail_tag[i].InnerText != null)
-            //  detail3 = detail3_tag[i].InnerText.Trim();
-            //string detail4 = detail4_tag[i].InnerText.Trim();
-
-
-            // Convertierungen
-            Flaeche = Flaeche.Replace("m&sup2;", "m²");
 
             string[] detailArray = new string[4];
             detailArray[0] = " ";
@@ -207,31 +186,12 @@ public class Service : IService
             //         0               1                 2               3                  4                      5                       6                          7                      8                      9                   10
             res[i] = Header + ";:;" + Picture + ";:;" + Miete + ";:;" + Zimmer + ";:;" + Flaeche + ";:;" + detailArray[0] + ";:;" + detailArray[1] + ";:;" + detailArray[2] + ";:;" + detailArray[3] + ";:;" + ID + ";:;" + lage + ";:;";
 
-            res[i] = res[i].Replace("&uuml;", "ü");
-            res[i] = res[i].Replace("&auml;", "ä");
-            res[i] = res[i].Replace("&ouml;", "ö");
-            res[i] = res[i].Replace("&Uuml;", "Ü");
-            res[i] = res[i].Replace("&Auml;", "Ä");
-            res[i] = res[i].Replace("&Ouml;", "Ö");
-            res[i] = res[i].Replace("&euro;", "€");
 
         }
 
-        /*
-         *
-        foreach (var tag in atags)
-        {
-            // Beschreibung
-            string s = tag.InnerText;
-            s = s.Trim();
-            res[i] = s;
-            i++;
-        }
-        */
+
 
         return res;
-
-        //  Console.ReadLine();
     }
  
 
