@@ -149,37 +149,125 @@ public class Service : IService
 
         for (int i = 0; i < count; i++)
         {
-            string Header = atags[i].InnerText.Trim();
-            string Picture = picture_tag[i].Attributes["src"].Value.Trim();
-            string Miete = Miete_tag[i].InnerText.Trim();
-            string Flaeche = Flaeche_tag[i].InnerText.Trim();
-            string Zimmer = Zimmer_tag[i].InnerText.Trim();
-            int j = i + 1;
-            var detail_tag = document.DocumentNode.SelectNodes("/descendant::li[attribute::class=\"media medialist box\"][position()=" + j + "]/descendant::ul[attribute::class=\"medialist__criteria-secondary unstyled inline mts hideable\"]/descendant::li[attribute::class=\"title\"]");
-            //     string link1 = atags[i].Attributes["onclick"].Value.Trim();
-            //     string link2 = atags[i].Attributes["href"].Value;
-            string lage = lage_tag[i].InnerText.Trim();
-            string ID = id_tag[i].Attributes["id"].Value.Trim();
-
-            ID = ID.Split('-')[1];
-
-
+            string Header, Picture, Miete, Flaeche, Zimmer, lage, ID;
             string[] detailArray = new string[4];
             detailArray[0] = " ";
             detailArray[1] = " ";
             detailArray[2] = " ";
             detailArray[3] = " ";
-
-            int k = 0;
-            if (detail_tag != null)
+            try
             {
-                foreach (var tag in detail_tag)
-                {
-                    detailArray[k] = tag.InnerText.Trim();
-                    k++;
-                }
+                Header = atags[i].InnerText.Trim();
+            }
+            catch (IndexOutOfRangeException)
+            {
+                Header = " ";
+            }
+            catch (ArgumentOutOfRangeException)
+            {
+                Header = " ";
             }
 
+            try
+            {
+                Picture = picture_tag[i].Attributes["src"].Value.Trim();
+            }
+            catch (IndexOutOfRangeException)
+            {
+                Picture = " ";
+            }
+            catch (ArgumentOutOfRangeException)
+            {
+                Picture = " ";
+            }
+
+            try
+            {
+                Miete = Miete_tag[i].InnerText.Trim();
+            }
+            catch (IndexOutOfRangeException)
+            {
+                Miete = " ";
+            }
+            catch (ArgumentOutOfRangeException)
+            {
+                Miete = " ";
+            }
+
+            try
+            {
+                Flaeche = Flaeche_tag[i].InnerText.Trim();
+            }
+            catch (IndexOutOfRangeException)
+            {
+                Flaeche = " ";
+            }
+            catch (ArgumentOutOfRangeException)
+            {
+                Flaeche = " ";
+            }
+
+            try
+            {
+                Zimmer = Zimmer_tag[i].InnerText.Trim();
+            }
+            catch (IndexOutOfRangeException)
+            {
+                Zimmer = " ";
+            }
+            catch (ArgumentOutOfRangeException)
+            {
+                Zimmer = " ";
+            }
+
+            try
+            {
+                int j = i + 1;
+                var detail_tag = document.DocumentNode.SelectNodes("/descendant::li[attribute::class=\"media medialist box\"][position()=" + j + "]/descendant::ul[attribute::class=\"medialist__criteria-secondary unstyled inline mts hideable\"]/descendant::li[attribute::class=\"title\"]");
+                int k = 0;
+                if (detail_tag != null)
+                {
+                    foreach (var tag in detail_tag)
+                    {
+                        detailArray[k] = tag.InnerText.Trim();
+                        k++;
+                    }
+                }
+
+            }
+            catch (IndexOutOfRangeException)
+            {
+            }
+            catch (ArgumentOutOfRangeException)
+            {
+            }
+
+            try
+            {
+                lage = lage_tag[i].InnerText.Trim();
+            }
+            catch (IndexOutOfRangeException)
+            {
+                lage = " ";
+            }
+            catch (ArgumentOutOfRangeException)
+            {
+                lage = " ";
+            }
+
+            try
+            {
+                ID = id_tag[i].Attributes["id"].Value.Trim();
+                ID = ID.Split('-')[1];
+            }
+            catch (IndexOutOfRangeException)
+            {
+                ID = " ";
+            }
+            catch (ArgumentOutOfRangeException)
+            {
+                ID = " ";
+            }
 
 
             //Im gesplitteten Array
