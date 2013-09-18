@@ -43,7 +43,7 @@ public class Service : IService
         if (count_result == 0)
         {
             //SQL Insert durchführen
-            string cmdInsertText = "INSERT INTO myapptable (ID, changed, PushNotificationUri, deleted, UsePushNotifications, UniqueID, ImmoscoutURL) values (" + maxID_result + 1 + ", " + changed + ", '" + PushNotificationUri + "', " + delete + ", " + UsePushNotifications + ", '" + UniqueID + "', '" + ImmoscoutURL + "');";
+            string cmdInsertText = "INSERT INTO myapptable (ID, changed, PushNotificationUri, deleted, UsePushNotifications, UniqueID, ImmoscoutURL) values (" + (maxID_result + 1).ToString() + ", " + changed + ", '" + PushNotificationUri + "', " + delete + ", " + UsePushNotifications + ", '" + UniqueID + "', '" + ImmoscoutURL + "');";
             MySqlCommand cmdInsert = new MySqlCommand(cmdInsertText, con);
             cmdInsert.ExecuteNonQuery();
 
