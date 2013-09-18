@@ -34,11 +34,16 @@ public class Service : IService
         MySqlCommand cmdCount = new MySqlCommand(cmdCountText, con);
         int count_result = int.Parse(cmdCount.ExecuteScalar().ToString());
 
+        //SQL höchste ID ABFRAGE durchführen (wird gebraucht für: neue ID muss 1 höher sein)
+        string cmdMaxIDText = "SELECT max(ID) FROM myapptable;";
+        MySqlCommand cmdMaxID = new MySqlCommand(cmdMaxIDText, con);
+        int maxID_result = int.Parse(cmdMaxID.ExecuteScalar().ToString());
+
         // prüfen ob uniqueID vorhanden ist
         if (count_result == 0)
         {
             //SQL Insert durchführen
-            string cmdInsertText = "INSERT INTO myapptable (ID, changed, PushNotificationUri, deleted, UsePushNotifications, UniqueID, ImmoscoutURL) values ( 0, " + changed + ", '" + PushNotificationUri + "', " + delete + ", " + UsePushNotifications + ", '" + UniqueID + "', '" + ImmoscoutURL + "');";
+            string cmdInsertText = "INSERT INTO myapptable (ID, changed, PushNotificationUri, deleted, UsePushNotifications, UniqueID, ImmoscoutURL) values (" + maxID_result + 1 + ", " + changed + ", '" + PushNotificationUri + "', " + delete + ", " + UsePushNotifications + ", '" + UniqueID + "', '" + ImmoscoutURL + "');";
             MySqlCommand cmdInsert = new MySqlCommand(cmdInsertText, con);
             cmdInsert.ExecuteNonQuery();
 
@@ -46,7 +51,7 @@ public class Service : IService
         else
         {
             // SQL Update durchführen
-            string cmdUpdateText = "UPDATE myapptable SET changed=" + changed + ", PushNotificationUri='" + PushNotificationUri + "', deleted=" + delete + ", UsePushNotifications=" + UsePushNotifications + ", ImmoscoutURL='" + ImmoscoutURL +"' WHERE UniqueID='" + UniqueID + "';";
+            string cmdUpdateText = "UPDATE myapptable SET changed=" + changed + ", PushNotificationUri='" + PushNotificationUri + "', deleted=" + delete + ", UsePushNotifications=" + UsePushNotifications + ", ImmoscoutURL='" + ImmoscoutURL + "' WHERE UniqueID='" + UniqueID + "';";
             MySqlCommand cmdUpdate = new MySqlCommand(cmdUpdateText, con);
             cmdUpdate.ExecuteNonQuery();
         }
